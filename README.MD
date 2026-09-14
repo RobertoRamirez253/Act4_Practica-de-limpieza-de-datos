@@ -1,12 +1,7 @@
-Objetivo
-Aplicar técnicas de limpieza y transformación de datos con Python en una base de datos diseñada para contener problemas de calidad.
-
-Datos
-Utiliza el dataset:
+Datos Utiliza el dataset:
 Cafe Sales – Dirty Data for Cleaning Training
 
-Actividad individual
-
+Actividad
 Realiza una práctica donde:
   Cargues e inspecciones la base.
   Identifiques los principales problemas de calidad.
@@ -14,14 +9,29 @@ Realiza una práctica donde:
   Justifiques las decisiones tomadas.
   Exportes una versión limpia de la base.
 
-Incluye en el repositorio una tabla resumen:
+Tabla resumen:
 Problema encontrado  |  Registros afectados  |  Acción realizada  |  Justificación
-           
-Entrega
-  Crea un repositorio en GitHub que incluya:
-    código o notebook utilizado;
-    base limpia;
-    archivo README con una breve descripción del procedimiento;
+Muchas filas con datos UNKNOWN o  ERROR | | Eliminacion de filas con 2 o mas datos invalidos | Un alto contenido de datos invalidos compromete la credibilidad de la informacion
 
-tabla resumen de problemas y decisiones.
-En Classroom deberán entregar únicamente el enlace al repositorio de GitHub.
+Tipo de dato string en valores Quantity, Price per unit, Total spent, Transaction date | | Se conviertieron Quantity a int, price y total a float, y Date a datetime | Para trabajar correctamente con las cifras.
+
+
+
+Descripción del procedimiento;
+Para realizar la limpieza de los datos porporcionados se siguio una metodologia de 13 pasos:
+
+1. Se importaron las librerias para manejar los archivos y operciones necesarias (pandas, numpy y matplotlib.pyplot)
+
+2. Se cargo el dataframe a la memoria con ayuda de pandas, para trabajar con el
+
+3. Se hizo una verificacion de las columnas, para ver si existia alguna duplicada y que fuera inecesaria, sin embargo en este caso solo habia 8, y todas no funcionaban, por lo que no hubo cambios
+
+4. Se eliminaron filas duplicadas, con .drop_duplicates
+
+5 y 6. Se eliminaron las filas inservibles. Aqui mi criterio fue, que si la fila tenia menos del 80% de los datos ó si 2 o mas campos contenien un error o un dato desconocido, se eliminaria la fila para mantener la credibilidad de los datos
+
+7. Estandarizar las categorias de cada columna. En el dataset, afortunadamente ya estaban estandarizadas las categorias correctamente, solo exixtian datos UNKNOWN y ERROR en varias columnas, pero estas se limpiarian mas tarde.
+
+8. Verificar errores en datos numericos: las categorias  Quantity, Price per unit, Total spent, Transaction date , se encontraban con tipo de dato string, y estas fueron cambiadas a int, float y datetime con ayuda de pandas, para trabajar correctamente con las cantidades
+
+9. 
